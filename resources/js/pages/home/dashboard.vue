@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import DashboardLayout from "../../shared/layouts/DashboardLayout";
+import DashboardLayout from "@/shared/layouts/DashboardLayout";
 export default {
     name: 'dashboard',
     components: {DashboardLayout},

@@ -1,17 +1,4 @@
 <template>
-<!--    <div id="toast-pos" class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1099">
-        <div id="toastAlert" class="toast align-items-center text-white bg-danger border" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body">
-                    <div class="hstack gap-3">
-                        <span id="toasticon" class="toast-icon-danger"></span>
-                        <span id="toastBody" class="ms-auto h5 text-center align-middle" >Hello, world! This is a toast message.</span>
-                    </div>
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    </div>-->
     <nav class="navbar navbar-transparent navbar-absolute">
         <div class="container">
             <div class="navbar-header">
@@ -38,7 +25,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" action="#" id="loginFormValidation" novalidate>
+                            <form method="post" @submit.prevent="handleLoginFormSubmit" id="loginFormValidation" novalidate>
                                 <div class="card" data-background="color" data-color="blue">
                                     <div class="card-header">
                                         <h3 class="card-title">Login</h3>
@@ -46,18 +33,20 @@
                                     <div class="card-content">
                                         <div class="form-group">
                                             <label>Email address</label>
-                                            <input type="email" placeholder="Enter email"
-                                                   required="true"
+                                            <input type="email" id="email" name="email" placeholder="Enter email"
+                                                   required="true" v-model="form.email"
                                                    class="form-control input-no-border">
+                                            <label id="email" class="error" for="email" v-if="form.errors.email">{{ form.errors.email }}</label>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" placeholder="Password" required="true"
-                                                   class="form-control input-no-border">
+                                                   class="form-control input-no-border" v-model="form.password">
+                                            <label id="password" class="error" for="password" v-if="form.errors.password">{{ form.errors.password }}</label>
                                         </div>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <button type="submit" class="btn btn-fill btn-wd ">Let's go</button>
+                                        <button type="submit" class="btn btn-fill btn-wd" :disabled="form.processing">Let's go</button>
                                         <div class="forgot">
                                             <a href="javascript:void(0)">Forgot your password?</a>
                                         </div>
@@ -99,12 +88,26 @@ export default {
 </script>
 
 <script setup>
-import {onMounted} from 'vue';
-import {useToastr} from '../../services/toastr'
+import {onMounted, watch} from 'vue';
+import {useForm} from '@inertiajs/inertia-vue3';
+import {useToastr} from '@/services/toastr';
+
 const toastr = useToastr();
 
-onMounted(() => {
+/*onMounted(() => {
     console.log('test');
     toastr.info('Hello world');
+})*/
+
+let form = useForm({
+    email: '',
+    password: ''
+});
+
+let handleLoginFormSubmit = () => {
+    form.post('/auth/authenticate');
+};
+watch(() => {
+    console.log(attrs);
 })
 </script>

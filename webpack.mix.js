@@ -8,3 +8,12 @@ mix.js("resources/js/app.js", "public/js")
     .copy("resources/img/**/*", "public/assets/img")
     .copy("resources/scripts/*", "public/assets/js")
     .version();
+
+mix.webpackConfig({
+    resolve: {
+        extensions: ['.js', '.json', '.vue'],
+        alias: {
+            '@': path.join(__dirname, './resources/js')
+        }
+    }
+});

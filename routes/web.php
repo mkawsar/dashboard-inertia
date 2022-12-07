@@ -13,9 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return \Inertia\Inertia::render('auth/login');
-});
-Route::get('/dashboard', function () {
-    return \Inertia\Inertia::render('home/dashboard');
-});
+//TODO

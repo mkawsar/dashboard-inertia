@@ -21,3 +21,9 @@
     content: "\F33A";
     font-family: 'bootstrap-icons';
 }
+
+.error {
+    font-size: 12px;
+    color: #ff4b5a;
+    font-weight: 500;
+}
