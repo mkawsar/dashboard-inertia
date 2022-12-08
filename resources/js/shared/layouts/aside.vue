@@ -8,14 +8,11 @@
             <div class="user">
                 <div class="info">
                     <div class="photo">
-                        <img src="/assets/img/face-1.jpg" alt="/assets/img/face-1.jpg"/>
+                        <img :src="user.picture" :alt="user.picture"/>
                     </div>
 
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-	                        <span>
-								Chet Faker
-		                        <b class="caret"></b>
-							</span>
+                        <span>{{ user.name }} <b class="caret"></b></span>
                     </a>
                     <div class="clearfix"></div>
 
@@ -291,6 +288,20 @@
 export default {
     name: 'AsideNav'
 }
+</script>
+
+<script setup>
+import {onMounted, reactive} from 'vue';
+import {usePage} from '@inertiajs/inertia-vue3';
+
+let user = reactive({
+    name: usePage().props.value.auth.user.username,
+    picture: usePage().props.value.auth.user.picture
+});
+
+// onMounted(() => {
+//     username = usePage().props.value.auth.user.username;
+// })
 </script>
 
 <style scoped>

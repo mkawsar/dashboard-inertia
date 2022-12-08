@@ -21,6 +21,20 @@ export default {
 }
 </script>
 
+<script setup>
+import {onMounted} from 'vue';
+import {usePage} from '@inertiajs/inertia-vue3';
+import {useToastr} from '@/services/toastr';
+
+const toastr = useToastr();
+
+onMounted(() => {
+    if (usePage().props.value.flash.success != null) {
+        toastr.success(usePage().props.value.flash.success);
+    }
+})
+</script>
+
 <style scoped>
 
 </style>

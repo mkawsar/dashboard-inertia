@@ -1,5 +1,7 @@
 const mix = require("laravel-mix");
-const path = require('path')
+const path = require('path');
+
+mix.disableSuccessNotifications();
 
 
 mix.js("resources/js/app.js", "public/js")

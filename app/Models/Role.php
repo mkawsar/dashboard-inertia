@@ -10,12 +10,11 @@ class Role extends Model
     use HasFactory;
 
     protected $table = 'roles';
-    public $incrementing = false;
 
     protected $hidden = ['created_at', 'updated_at',];
 
     public function user()
     {
-        return $this->hasMany('App\Models\User', 'role_id', 'id');
+        return $this->hasMany(User::class, 'role_id', 'id');
     }
 }

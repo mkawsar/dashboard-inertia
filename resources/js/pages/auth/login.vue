@@ -25,7 +25,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-offset-3">
-                            <form method="post" @submit.prevent="handleLoginFormSubmit" id="loginFormValidation" novalidate>
+                            <form method="post" @submit.prevent="handleLoginFormSubmit" id="loginFormValidation"
+                                  novalidate>
                                 <div class="card" data-background="color" data-color="blue">
                                     <div class="card-header">
                                         <h3 class="card-title">Login</h3>
@@ -36,17 +37,22 @@
                                             <input type="email" id="email" name="email" placeholder="Enter email"
                                                    required="true" v-model="form.email"
                                                    class="form-control input-no-border">
-                                            <label id="email" class="error" for="email" v-if="form.errors.email">{{ form.errors.email }}</label>
+                                            <label id="email" class="error" for="email" v-if="form.errors.email">{{
+                                                    form.errors.email
+                                                }}</label>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" placeholder="Password" required="true"
                                                    class="form-control input-no-border" v-model="form.password">
-                                            <label id="password" class="error" for="password" v-if="form.errors.password">{{ form.errors.password }}</label>
+                                            <label id="password" class="error" for="password"
+                                                   v-if="form.errors.password">{{ form.errors.password }}</label>
                                         </div>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <button type="submit" class="btn btn-fill btn-wd" :disabled="form.processing">Let's go</button>
+                                        <button type="submit" class="btn btn-fill btn-wd" :disabled="form.processing">
+                                            Let's go
+                                        </button>
                                         <div class="forgot">
                                             <a href="javascript:void(0)">Forgot your password?</a>
                                         </div>
@@ -71,6 +77,7 @@
 
 <script>
 import moment from 'moment';
+
 export default {
     name: 'Login',
     data() {
@@ -82,22 +89,16 @@ export default {
         $(function () {
             demo.checkFullPageBackgroundImage();
         });
-        //$('#loginFormValidation').validate();
-    }
+    },
 }
 </script>
 
 <script setup>
-import {onMounted, watch} from 'vue';
-import {useForm} from '@inertiajs/inertia-vue3';
+import {computed} from 'vue';
+import {useForm, usePage} from '@inertiajs/inertia-vue3';
 import {useToastr} from '@/services/toastr';
 
 const toastr = useToastr();
-
-/*onMounted(() => {
-    console.log('test');
-    toastr.info('Hello world');
-})*/
 
 let form = useForm({
     email: '',
@@ -107,7 +108,10 @@ let form = useForm({
 let handleLoginFormSubmit = () => {
     form.post('/auth/authenticate');
 };
-watch(() => {
-    console.log(attrs);
-})
+
+let error = computed(() => {
+    if (usePage().props.value.flash.error != null) {
+        toastr.error(usePage().props.value.flash.error);
+    }
+});
 </script>

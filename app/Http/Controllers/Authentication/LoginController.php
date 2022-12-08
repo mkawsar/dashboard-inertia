@@ -34,6 +34,6 @@ class LoginController extends Controller
             return redirect()->intended();
         }
 
-        return back()->with(['error' => 'The provided credentials do not match our records.']);
+        return back()->with('error', 'The provided credentials do not match our records.');
     }
 }
