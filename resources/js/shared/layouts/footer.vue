@@ -22,9 +22,7 @@
             </nav>
             <div class="copyright pull-right">
                 &copy;
-                {{year}}
-                , made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative
-                Tim</a>
+                {{year}}, made with <i class="fa fa-heart heart"></i> by <a href="javascript:void(0)">No Name</a>
             </div>
         </div>
     </footer>
