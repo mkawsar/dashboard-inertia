@@ -36,6 +36,12 @@
                                     <span class="sidebar-normal">Settings</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="sidebar-mini text-danger">L</span>
+                                    <span class="sidebar-normal text-danger">Logout</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
