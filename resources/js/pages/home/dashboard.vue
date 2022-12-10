@@ -1,4 +1,5 @@
 <template>
+    <Head title="Home"/>
     <DashboardLayout>
         <div class="container-fluid">
             <div class="row">

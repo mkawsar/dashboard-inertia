@@ -37,7 +37,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#settings">
+                                <a href="javascript:void(0)" @click.prevent="handleLogoutAction">
                                     <span class="sidebar-mini text-danger">L</span>
                                     <span class="sidebar-normal text-danger">Logout</span>
                                 </a>
@@ -73,11 +73,17 @@ export default {
 <script setup>
 import {reactive} from 'vue';
 import {usePage} from '@inertiajs/inertia-vue3';
+import {Inertia} from '@inertiajs/inertia'
 
 let user = reactive({
     name: usePage().props.value.auth.user.username,
     picture: usePage().props.value.auth.user.picture
 });
+
+let handleLogoutAction = () => {
+    Inertia.post('/auth/logout');
+};
+
 </script>
 
 <style scoped>

@@ -37,16 +37,17 @@
                                             <input type="email" id="email" name="email" placeholder="Enter email"
                                                    required="true" v-model="form.email"
                                                    class="form-control input-no-border">
-                                            <label id="email" class="error" for="email" v-if="form.errors.email">{{
-                                                    form.errors.email
-                                                }}</label>
+                                            <label id="email" class="error" for="email" v-if="form.errors.email">
+                                                {{ form.errors.email }}
+                                            </label>
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" placeholder="Password" required="true"
                                                    class="form-control input-no-border" v-model="form.password">
-                                            <label id="password" class="error" for="password"
-                                                   v-if="form.errors.password">{{ form.errors.password }}</label>
+                                            <label id="password" class="error" for="password" v-if="form.errors.password">
+                                                {{ form.errors.password }}
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="card-footer text-center">
@@ -66,8 +67,8 @@
             <footer class="footer footer-transparent">
                 <div class="container">
                     <div class="copyright">
-                        &copy; {{ year }}, made with <i class="fa fa-heart heart"></i> by <a href="javascript:void(0)">No
-                        man</a>
+                        &copy; {{ year }}, made with <i class="fa fa-heart heart"></i> by 
+                        <a href="javascript:void(0)">No man</a>
                     </div>
                 </div>
             </footer>
@@ -94,7 +95,7 @@ export default {
 </script>
 
 <script setup>
-import {computed} from 'vue';
+import {computed, onMounted} from 'vue';
 import {useForm, usePage} from '@inertiajs/inertia-vue3';
 import {useToastr} from '@/services/toastr';
 
@@ -114,4 +115,10 @@ let error = computed(() => {
         toastr.error(usePage().props.value.flash.error);
     }
 });
+
+onMounted(() => {
+    if (usePage().props.value.flash.success != null) {
+        toastr.success(usePage().props.value.flash.success);
+    }
+})
 </script>
