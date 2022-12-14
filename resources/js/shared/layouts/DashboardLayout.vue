@@ -32,6 +32,10 @@ onMounted(() => {
     if (usePage().props.value.flash.success != null) {
         toastr.success(usePage().props.value.flash.success);
     }
+
+    if (usePage().props.value.flash.error != null) {
+        toastr.error(usePage().props.value.flash.error);
+    }
 })
 </script>
 

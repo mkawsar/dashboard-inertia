@@ -45,7 +45,8 @@ class HandleInertiaRequests extends Middleware
             'auth' => Auth::user() ? [
                 'user' => [
                     'username' => $request->user()->name,
-                    'picture' =>  $request->user()->picture
+                    'picture' =>  $request->user()->picture,
+                    'role' => strtolower($request->user()->role->name)
                 ]
             ] : null
         ]);
