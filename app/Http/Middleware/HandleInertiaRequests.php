@@ -48,7 +48,11 @@ class HandleInertiaRequests extends Middleware
                     'picture' =>  $request->user()->picture,
                     'role' => strtolower($request->user()->role->name)
                 ]
-            ] : null
+            ] : null,
+            'menu' => [
+                'left' => fn () => $request->session()->get('menuActive'),
+                'sub' => fn () => $request->session()->get('subNavActive')
+            ],
         ]);
     }
 }

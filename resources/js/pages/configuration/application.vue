@@ -7,7 +7,7 @@
                         <div class="card-content">
                             <ConfigLayout>
                                 <div class="tab-content text-center">
-                                    <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient. With a smooth metal surface that seamlessly meets the new Retina HD display.</p>
+                                    <p>Hello wrold.</p>
                                 </div>
                             </ConfigLayout>
                         </div>
@@ -19,11 +19,10 @@
 </template>
 
 <script>
-import DashboardLayout from '@/shared/layouts/DashboardLayout.vue';
+import DashboardLayout from '@/shared/layouts/DashboardLayout.vue'
 import ConfigLayout from './layouts/ConfigLayout.vue';
-
 export default {
-    name: 'ConfigurationIndex',
     components: { DashboardLayout, ConfigLayout },
+    name: 'ConfigApplication'
 }
 </script>

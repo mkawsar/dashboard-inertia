@@ -10,5 +10,6 @@ Route::group([
 ], function () {
     Route::name('config.')->prefix('configuration')->group(function () {
         Route::get('index', [ConfigurationController::class, 'index'])->name('index');
+        Route::get('application', [ConfigurationController::class, 'application'])->name('application');
     });
 });

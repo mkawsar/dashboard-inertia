@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar" data-background-color="white" data-active-color="danger">
+    <div class="sidebar" data-background-color="brown" data-active-color="danger">
         <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text logo-mini">CT</a>
             <a href="http://www.creative-tim.com" class="simple-text logo-normal">Creative Tim</a>
@@ -47,13 +47,13 @@
                 </div>
             </div>
             <ul class="nav">
-                <li :class="{ 'active': $page.url === '/admin/dashboard' }">
+                <li :class="{ 'active': $page.props.menu.left === 'dashboard' }">
                     <Link href="/admin/dashboard">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </Link>
                 </li>
-                <li :class="{ 'active': $page.url === '/admin/configuration/index' }" v-if="$page.props.auth.user.role === 'admin'">
+                <li :class="{ 'active': $page.props.menu.left === 'configuration' }" v-if="$page.props.auth.user.role === 'admin'">
                     <Link href="/admin/configuration/index">
                         <i class="ti-settings"></i>
                         <p>Configuration</p>

@@ -10,6 +10,16 @@ class ConfigurationController extends Controller
 {
     public function index()
     {
+        session()->put('menuActive', 'configuration');
+        session()->put('subNavActive', 'app');
+
         return Inertia::render('configuration/index');
+    }
+
+    public function application()
+    {
+        session()->put('menuActive', 'configuration');
+        session()->put('subNavActive', 'application');
+        return Inertia::render('configuration/application');
     }
 }
