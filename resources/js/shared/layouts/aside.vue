@@ -48,13 +48,13 @@
             </div>
             <ul class="nav">
                 <li :class="{ 'active': $page.props.menu.left === 'dashboard' }">
-                    <Link href="/admin/dashboard">
+                    <Link :href="$route('dashboard.index')">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </Link>
                 </li>
                 <li :class="{ 'active': $page.props.menu.left === 'configuration' }" v-if="$page.props.auth.user.role === 'admin'">
-                    <Link href="/admin/configuration/index">
+                    <Link :href="$route('config.interest.index')">
                         <i class="ti-settings"></i>
                         <p>Configuration</p>
                     </Link>

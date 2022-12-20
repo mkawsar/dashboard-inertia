@@ -1,4 +1,5 @@
 <template>
+    <Head title="Application"/>
     <DashboardLayout>
         <div class="container-fluid">
             <div class="row">
@@ -20,7 +21,7 @@
 
 <script>
 import DashboardLayout from '@/shared/layouts/DashboardLayout.vue'
-import ConfigLayout from './layouts/ConfigLayout.vue';
+import ConfigLayout from '@/pages/configuration/layouts/ConfigLayout.vue';
 export default {
     components: { DashboardLayout, ConfigLayout },
     name: 'ConfigApplication'

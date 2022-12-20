@@ -5,11 +5,13 @@ import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue3';
 createInertiaApp({
     resolve: name => require(`./pages/${name}`),
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        let app = createApp({ render: () => h(App, props) });
+        app.config.globalProperties.$route = window.route;
+        app
             .component('Link', Link)
             .component('Head', Head)
             .use(plugin)
-            .mount(el)
+            .mount(el);
     },
     title: title => `My Bank - ${title}`
 });

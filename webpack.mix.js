@@ -11,11 +11,14 @@ mix.js("resources/js/app.js", "public/js")
     .copy("resources/scripts/*", "public/assets/js")
     .version();
 
+mix.alias({ ziggy: path.resolve('vendor/tightenco/ziggy/dist') });
+
 mix.webpackConfig({
     resolve: {
         extensions: ['.js', '.json', '.vue'],
         alias: {
-            '@': path.join(__dirname, './resources/js')
+            '@': path.join(__dirname, './resources/js'),
+            ziggy: path.resolve('vendor/tightenco/ziggy/dist'),
         }
     }
 });

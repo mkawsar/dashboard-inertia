@@ -1,4 +1,5 @@
 <template>
+    <Head title="Login"/>
     <nav class="navbar navbar-transparent navbar-absolute">
         <div class="container">
             <div class="navbar-header">
