@@ -54,10 +54,19 @@
                     </Link>
                 </li>
                 <li :class="{ 'active': $page.props.menu.left === 'configuration' }" v-if="$page.props.auth.user.role === 'admin'">
-                    <Link :href="$route('config.interest.index')">
-                        <i class="ti-settings"></i>
-                        <p>Configuration</p>
-                    </Link>
+                    <a data-toggle="collapse" href="#configurationNav">
+                        <i class="ti-settings"></i> <p>Configuration <b class="caret"></b></p>
+                    </a>
+                    <div class="collapse" :class="{ 'in': $page.props.menu.left === 'configuration' }" id="configurationNav">
+                        <ul class="nav">
+                            <li :class="{ 'active': $page.props.menu.sub === 'interest' }">
+                                <Link :href="$route('config.interest.index')">
+                                    <span class="sidebar-mini">IS</span>
+                                    <span class="sidebar-normal">Interest Setting</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
         </div>

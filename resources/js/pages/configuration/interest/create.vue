@@ -3,49 +3,52 @@
     <DashboardLayout>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 col-sm-12">
+                <div class="col-sm-12">
                     <div class="card">
-                        <config-layout>
-                            <div class="tab-content text-center">
-                                <form @submit.prevent="handleSubmitInterestForm" novalidate>
-                                    <div class="card-content">
-                                        <pre>{{ form }}</pre>
-                                        <fieldset>
-                                            <div class="form-group">
-                                                <label class="col-sm-3 control-label">Required Text</label>
-                                                <div class="col-sm-9">
-                                                    <input class="form-control error" type="text" name="required" required="required" aria-invalid="true">
-                                                    <label id="required-error" class="error" for="required">This field is required.</label>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <div class="form-group">
-                                            <label for="type" class="col-sm-3 control-label">Interest Type</label>
-                                            <div class="col-sm-9">
-                                                <select name="type" id="type" class="form-control">
-                                                    <option>Select an Option</option>
-                                                    <option value="saving">Saving</option>
-                                                    <option value="personal">Personal</option>
-                                                    <option value="bussiness">Bussiness</option>
-                                                    <option value="car">car</option>
-                                                    <option value="home">Home</option>
-                                                    <option value="tour">Tour</option>
-                                                </select>
-                                                <label id="required-error" class="error" for="required">This field is required.</label>
-                                            </div>
-                                            <label id="email" class="error" for="email" v-if="form.errors.type">
-                                                {{ form.errors.type }}
-                                            </label>
-                                        </div>
+                        <form class="form-horizontal" @submit.prevent="handleSubmitInterestForm" novalidate>
+                            <div class="card-header">
+                                <div class="form-group">
+                                    <label for="type" class="col-sm-2"></label>
+                                    <div class="col-sm-6">
+                                        <h4 class="card-title">Interest Config Setting</h4>
                                     </div>
-                                    <div class="card-footer">
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-fill btn-info">Sign in</button>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
-                        </config-layout>
+                            <div class="card-content">
+                                <div class="form-group">
+                                    <label for="type" class="col-sm-2 control-label">Interest Type</label>
+                                    <div class="col-sm-6">
+                                        <select name="type" id="type" class="form-control" v-model="form.type">
+                                            <option>Select an Option</option>
+                                            <option value="saving">Saving</option>
+                                            <option value="personal">Personal</option>
+                                            <option value="bussiness">Bussiness</option>
+                                            <option value="car">car</option>
+                                            <option value="home">Home</option>
+                                            <option value="tour">Tour</option>
+                                        </select>
+                                        <label :id="form.errors.type" class="error" :for="form.errors.type" v-if="form.errors.type">
+                                            {{ form.errors.type }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="percentage" class="col-sm-2 control-label">Interest Percentage</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" id="percentage" name="percentage" class="form-control" placeholder="Percentage" v-model="form.percentage"/>
+                                        <label :id="form.percentage" class="error" :for="form.percentage" v-if="form.errors.percentage">
+                                            {{ form.errors.percentage }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="type" class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-6">
+                                        <button type="submit" class="btn btn-outline btn-success" :disabled="form.processing">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -54,21 +57,17 @@
 </template>
 
 <script>
-import {onMounted} from 'vue';
 import {useForm} from '@inertiajs/inertia-vue3';
 import DashboardLayout from '@/shared/layouts/DashboardLayout.vue'
-import ConfigLayout from '@/pages/configuration/layouts/ConfigLayout.vue';
 export default {
-  components: { DashboardLayout, ConfigLayout },
+  components: { DashboardLayout },
     name: 'InterestCreate',
     setup() {
         let form = useForm({
-            type: ''
+            type: '',
+            percentage: ''
         });
 
-        // onMounted(() => {
-        //     console.log($route('config.interest.index'));
-        // });
         return {form}
     },
     methods: {
@@ -76,6 +75,5 @@ export default {
             this.form.post(this.$route('config.interest.store'));
         }
     }
-
 }
 </script>

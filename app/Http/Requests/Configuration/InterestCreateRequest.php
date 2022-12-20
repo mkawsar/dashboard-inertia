@@ -24,7 +24,8 @@ class InterestCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'type' => 'required'
+            'type' => 'required|unique:interest_configs,type',
+            'percentage' => 'required|numeric|min:0|max:15',
         ];
     }
 }

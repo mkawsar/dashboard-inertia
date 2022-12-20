@@ -16,4 +16,6 @@ createInertiaApp({
     title: title => `My Bank - ${title}`
 });
 
-InertiaProgress.init()
+InertiaProgress.init({
+    color: 'red'
+})
