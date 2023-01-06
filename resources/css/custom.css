@@ -27,3 +27,7 @@
     color: #ff4b5a;
     font-weight: 500;
 }
+
+.disable-link {
+    pointer-events: none;
+}

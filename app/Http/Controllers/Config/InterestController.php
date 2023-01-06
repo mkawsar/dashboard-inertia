@@ -21,7 +21,7 @@ class InterestController extends Controller
             ->when(Request::input('search'), function ($query, $search) {
                 $query->where('name', 'LIKE', "%{$search}%");
             })
-            ->paginate(2)
+            ->paginate(10)
             ->withQueryString();
 
         return Inertia::render('configuration/interest/index', [
